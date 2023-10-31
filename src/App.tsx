@@ -19,7 +19,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="flex flex-col bg-blue-1 dark:bg-bluedark-2 min-h-screen">
+      <div
+        className={`flex flex-col bg-blue-1 dark:bg-bluedark-2 min-h-screen overflow-hidden ${
+          userTheme === 'dark' ? 'darkblob' : 'lightblob'
+        }`}
+      >
         <Header />
         <div className="relative">
           <HeaderMobile />

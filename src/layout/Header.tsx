@@ -27,13 +27,19 @@ export default function Header() {
           <nav className="hidden items-center align-middle justify-between w-96 xl:flex">
             <ul className="flex items-center align-middle justify-between w-full">
               <Link to={'/champions'}>
-                <li className="text-2xl text-blue-12 border-b-">Champs</li>
+                <li className="text-2xl text-blue-12 dark:text-bluedark-12  border-b-">
+                  Champs
+                </li>
               </Link>
               <Link to={'/champions'}>
-                <li className="text-2xl text-blue-12">Statistics</li>
+                <li className="text-2xl text-blue-12 dark:text-bluedark-12 ">
+                  Statistics
+                </li>
               </Link>
               <Link to={'/champions'}>
-                <li className="text-2xl text-blue-12">Items</li>
+                <li className="text-2xl text-blue-12 dark:text-bluedark-12 ">
+                  Items
+                </li>
               </Link>
               <Theme />
             </ul>

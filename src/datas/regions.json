@@ -1,0 +1,20 @@
+{
+  "regions": [
+    { "regionUser": "BR", "regionRiot": "BR1" },
+    { "regionUser": "EUN", "regionRiot": "EUN1" },
+    { "regionUser": "EUW", "regionRiot": "EUW1" },
+    { "regionUser": "JP", "regionRiot": "JP1" },
+    { "regionUser": "KR", "regionRiot": "KR" },
+    { "regionUser": "LA1", "regionRiot": "LA1" },
+    { "regionUser": "LA2", "regionRiot": "LA2" },
+    { "regionUser": "NA", "regionRiot": "NA1" },
+    { "regionUser": "OC", "regionRiot": "OC1" },
+    { "regionUser": "TR", "regionRiot": "TR1" },
+    { "regionUser": "RU", "regionRiot": "RU" },
+    { "regionUser": "PH", "regionRiot": "PH2" },
+    { "regionUser": "SG", "regionRiot": "SG2" },
+    { "regionUser": "TH", "regionRiot": "TH2" },
+    { "regionUser": "TW", "regionRiot": "TW2" },
+    { "regionUser": "VN", "regionRiot": "VN2" }
+  ]
+}

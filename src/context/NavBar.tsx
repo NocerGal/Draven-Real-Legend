@@ -1,10 +1,4 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 
 type NavBarProviderProps = {
   children: ReactNode;
@@ -50,11 +44,6 @@ export function NavBarProvider({ children }: NavBarProviderProps) {
     document.documentElement.classList.add('dark');
     localStorage.setItem('theme', 'dark');
   };
-
-  useEffect(() => {
-    console.log('theme' + theme);
-    // console.log('isSmallNavBar' + isSmallNavBarOpened);
-  }, [theme]);
 
   return (
     <NavBarContext.Provider
