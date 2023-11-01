@@ -1,20 +1,103 @@
 {
   "regions": [
-    { "regionUser": "BR", "regionRiot": "BR1" },
-    { "regionUser": "EUN", "regionRiot": "EUN1" },
-    { "regionUser": "EUW", "regionRiot": "EUW1" },
-    { "regionUser": "JP", "regionRiot": "JP1" },
-    { "regionUser": "KR", "regionRiot": "KR" },
-    { "regionUser": "LA1", "regionRiot": "LA1" },
-    { "regionUser": "LA2", "regionRiot": "LA2" },
-    { "regionUser": "NA", "regionRiot": "NA1" },
-    { "regionUser": "OC", "regionRiot": "OC1" },
-    { "regionUser": "TR", "regionRiot": "TR1" },
-    { "regionUser": "RU", "regionRiot": "RU" },
-    { "regionUser": "PH", "regionRiot": "PH2" },
-    { "regionUser": "SG", "regionRiot": "SG2" },
-    { "regionUser": "TH", "regionRiot": "TH2" },
-    { "regionUser": "TW", "regionRiot": "TW2" },
-    { "regionUser": "VN", "regionRiot": "VN2" }
-  ]
+    {
+      "regionUser": "BR",
+      "regionRiot": "BR1",
+      "regionRouting": "americas.api.riotgames.com"
+    },
+    {
+      "regionUser": "EUN",
+      "regionRiot": "EUN1",
+      "regionRouting": "europe.api.riotgames.com"
+    },
+    {
+      "regionUser": "EUW",
+      "regionRiot": "EUW1",
+      "regionRouting": "europe.api.riotgames.com"
+    },
+    {
+      "regionUser": "JP",
+      "regionRiot": "JP1",
+      "regionRouting": "asia.api.riotgames.com"
+    },
+    {
+      "regionUser": "KR",
+      "regionRiot": "KR",
+      "regionRouting": "asia.api.riotgames.com"
+    },
+    {
+      "regionUser": "LA1",
+      "regionRiot": "LA1",
+      "regionRouting": "americas.api.riotgames.com"
+    },
+    {
+      "regionUser": "LA2",
+      "regionRiot": "LA2",
+      "regionRouting": "americas.api.riotgames.com"
+    },
+    {
+      "regionUser": "NA",
+      "regionRiot": "NA1",
+      "regionRouting": "americas.api.riotgames.com"
+    },
+    {
+      "regionUser": "OC",
+      "regionRiot": "OC1",
+      "regionRouting": "sea.api.riotgames.com"
+    },
+    {
+      "regionUser": "TR",
+      "regionRiot": "TR1",
+      "regionRouting": "europe.api.riotgames.com"
+    },
+    {
+      "regionUser": "RU",
+      "regionRiot": "RU",
+      "regionRouting": "europe.api.riotgames.com"
+    },
+    {
+      "regionUser": "PH",
+      "regionRiot": "PH2",
+      "regionRouting": "asia.api.riotgames.com"
+    },
+    {
+      "regionUser": "SG",
+      "regionRiot": "SG2",
+      "regionRouting": "asia.api.riotgames.com"
+    },
+    {
+      "regionUser": "TH",
+      "regionRiot": "TH2",
+      "regionRouting": "asia.api.riotgames.com"
+    },
+    {
+      "regionUser": "TW",
+      "regionRiot": "TW2",
+      "regionRouting": "asia.api.riotgames.com"
+    },
+    {
+      "regionUser": "VN",
+      "regionRiot": "VN2",
+      "regionRouting": "asia.api.riotgames.com"
+    }
+  ],
+
+  "continents": {
+    "BR1": "americas.api.riotgames.com",
+    "EUN1": "europe.api.riotgames.com",
+    "EUW1": "europe.api.riotgames.com",
+    "JP1": "asia.api.riotgames.com",
+    "KR": "asia.api.riotgames.com",
+    "LA1": "americas.api.riotgames.com",
+    "LA2": "americas.api.riotgames.com",
+    "NA1": "americas.api.riotgames.com",
+    "OC1": "sea.api.riotgames.com",
+    "TR1": "europe.api.riotgames.com",
+    "RU": "europe.api.riotgames.com",
+    "PH2": "asia.api.riotgames.com",
+    "SG2": "asia.api.riotgames.com",
+    "TH2": "asia.api.riotgames.com",
+    "TW2": "asia.api.riotgames.com",
+    "VN2": "asia.api.riotgames.com"
+  }
 }

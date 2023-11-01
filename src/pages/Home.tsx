@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import DRAVEN_IMG from '../assets/Draven_6.jpg';
 import { regions } from '../datas/regions.json';
 import { useNavigate } from 'react-router-dom';
+import { getUserDatas } from '../api/routesApi';
 
 export default function Home() {
   return (
@@ -37,29 +38,46 @@ type FindPlayerFormProps = {
 };
 
 function FindPlayerForm({ label }: FindPlayerFormProps) {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState<string | null>(
     localStorage.getItem('summonerName')
   );
+  const refInput = useRef<null | HTMLInputElement>(null);
+  const refSelect = useRef<null | HTMLSelectElement>(null);
   const [regionValue, setRegionValue] = useState<string | null>(
     localStorage.getItem('region')
   );
-  const [errorMessage, setErrorMesssage] = useState<string | null | null>(null);
-  const navigate = useNavigate();
-  const refInput = useRef<null | HTMLInputElement>(null);
-  const refSelect = useRef<null | HTMLSelectElement>(null);
+  const [errorMessage, setErrorMesssage] = useState<string | null>(null);
 
   const handleErrorSubmit = () => {
     setErrorMesssage('Merci de renseigner votre summoner name');
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (refInput.current && refSelect.current) {
       localStorage.setItem('summonerName', refInput.current.value);
       localStorage.setItem('region', refSelect.current.value);
     } else {
       return;
     }
-    navigate(`/${refSelect.current.value}/${refInput.current.value}`);
+
+    const userDatas = await getUserDatas(
+      refSelect.current.value,
+      refInput.current.value
+    );
+    // interface Continents {
+    //   [key: string]: string;
+    // }
+    // const continentsDatas: Continents = continents;
+
+    // console.log(
+    //   await getUserMatchHistory(
+    //     userDatas.puuid,
+    //     continentsDatas[refSelect.current.value]
+    //   )
+    // );
+
+    navigate(`/${refSelect.current.value}/${userDatas.puuid}`);
   };
 
   return (
