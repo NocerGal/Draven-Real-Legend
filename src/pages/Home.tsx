@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import DRAVEN_IMG from '../assets/Draven_6.jpg';
 import { regions } from '../datas/regions.json';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   return (
@@ -32,21 +33,33 @@ export default function Home() {
 }
 
 type FindPlayerFormProps = {
-  label: string;
+  label: string | null;
 };
 
 function FindPlayerForm({ label }: FindPlayerFormProps) {
-  const [errorMessage, setErrorMesssage] = useState<string | null>(null);
-
+  const [inputValue, setInputValue] = useState<string | null>(
+    localStorage.getItem('summonerName')
+  );
+  const [regionValue, setRegionValue] = useState<string | null>(
+    localStorage.getItem('region')
+  );
+  const [errorMessage, setErrorMesssage] = useState<string | null | null>(null);
+  const navigate = useNavigate();
   const refInput = useRef<null | HTMLInputElement>(null);
   const refSelect = useRef<null | HTMLSelectElement>(null);
 
   const handleErrorSubmit = () => {
-    setErrorMesssage('Merci de renseigner votre pseudo');
+    setErrorMesssage('Merci de renseigner votre summoner name');
   };
 
   const handleSubmit = () => {
-    console.log('form submitted');
+    if (refInput.current && refSelect.current) {
+      localStorage.setItem('summonerName', refInput.current.value);
+      localStorage.setItem('region', refSelect.current.value);
+    } else {
+      return;
+    }
+    navigate(`/${refSelect.current.value}/${refInput.current.value}`);
   };
 
   return (
@@ -55,6 +68,7 @@ function FindPlayerForm({ label }: FindPlayerFormProps) {
       noValidate
       onSubmit={(e) => {
         e.preventDefault();
+
         refInput.current?.value == null || refInput.current?.value === ''
           ? handleErrorSubmit()
           : handleSubmit();
@@ -70,6 +84,7 @@ function FindPlayerForm({ label }: FindPlayerFormProps) {
         <div className="flex gap-4 mb-4">
           <div className="flex gap-2 h-full text-blue-12 dark:text-bluedark-1 border-2 border-blue-6  bg-blue-1 focus:outline-blue-8 rounded-2xl max-w-xs focus-within:border-blue-8 dark:focus-within:border-blue-8">
             <input
+              {...(inputValue ? { defaultValue: inputValue } : {})}
               id="summoner-name"
               ref={refInput}
               type="text"
@@ -87,11 +102,28 @@ function FindPlayerForm({ label }: FindPlayerFormProps) {
               ref={refSelect}
               className="rounded-r-2xl outline-none pl-1.5 border-l-2 cursor-pointer border-blue-6 dark:border:bluedark-6"
             >
-              {regions.map((region) => (
-                <option key={region.regionRiot} value={region.regionRiot}>
-                  {region.regionUser}
-                </option>
-              ))}
+              {regionValue ? (
+                <>
+                  <option value={regionValue}>{regionValue}</option>
+                  {regions.map(
+                    (region) =>
+                      region.regionRiot !== regionValue && (
+                        <option
+                          key={region.regionRiot}
+                          value={region.regionRiot}
+                        >
+                          {region.regionUser}
+                        </option>
+                      )
+                  )}
+                </>
+              ) : (
+                regions.map((region) => (
+                  <option key={region.regionRiot} value={region.regionRiot}>
+                    {region.regionUser}
+                  </option>
+                ))
+              )}
             </select>
           </div>
 
