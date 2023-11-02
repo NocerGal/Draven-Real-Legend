@@ -44,8 +44,11 @@ function FindPlayerForm({ label }: FindPlayerFormProps) {
   );
   const refInput = useRef<null | HTMLInputElement>(null);
   const refSelect = useRef<null | HTMLSelectElement>(null);
-  const [regionValue, setRegionValue] = useState<string | null>(
-    localStorage.getItem('region')
+  const [regionUserValue, setRegionUserValue] = useState<string | null>(
+    localStorage.getItem('regionUser')
+  );
+  const [regionRiotValue, setRegionRiotUserValue] = useState<string | null>(
+    localStorage.getItem('regionRiot')
   );
   const [errorMessage, setErrorMesssage] = useState<string | null>(null);
 
@@ -55,29 +58,31 @@ function FindPlayerForm({ label }: FindPlayerFormProps) {
 
   const handleSubmit = async () => {
     if (refInput.current && refSelect.current) {
-      localStorage.setItem('summonerName', refInput.current.value);
-      localStorage.setItem('region', refSelect.current.value);
+      localStorage.setItem('regionRiot', refSelect.current.value);
+      localStorage.setItem(
+        'regionUser',
+        refSelect.current.options[refSelect.current.selectedIndex].text
+      );
     } else {
       return;
     }
 
-    const userDatas = await getUserDatas(
-      refSelect.current.value,
-      refInput.current.value
-    );
-    // interface Continents {
-    //   [key: string]: string;
-    // }
-    // const continentsDatas: Continents = continents;
+    try {
+      const { responseStatus, userDatas } = await getUserDatas(
+        refSelect.current.value,
+        refInput.current.value
+      );
 
-    // console.log(
-    //   await getUserMatchHistory(
-    //     userDatas.puuid,
-    //     continentsDatas[refSelect.current.value]
-    //   )
-    // );
-
-    navigate(`/${refSelect.current.value}/${userDatas.puuid}`);
+      localStorage.setItem('summonerName', userDatas.name);
+      if (responseStatus === 200) {
+        navigate(`/${refSelect.current.value}/${userDatas.puuid}`);
+      }
+    } catch {
+      setErrorMesssage(
+        'Votre summoner et/ou la région seletionnée est/sont incorrectes'
+      );
+      navigate('/');
+    }
   };
 
   return (
@@ -120,12 +125,12 @@ function FindPlayerForm({ label }: FindPlayerFormProps) {
               ref={refSelect}
               className="rounded-r-2xl outline-none pl-1.5 border-l-2 cursor-pointer border-blue-6 dark:border:bluedark-6"
             >
-              {regionValue ? (
+              {regionUserValue && regionRiotValue ? (
                 <>
-                  <option value={regionValue}>{regionValue}</option>
+                  <option value={regionRiotValue}>{regionUserValue}</option>
                   {regions.map(
                     (region) =>
-                      region.regionRiot !== regionValue && (
+                      region.regionRiot !== regionUserValue && (
                         <option
                           key={region.regionRiot}
                           value={region.regionRiot}
