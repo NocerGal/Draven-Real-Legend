@@ -29,7 +29,7 @@ function App() {
         <HeaderMobile />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:region/:user" element={<UserInfos />} />
+          <Route path="/:region/:puuid" element={<UserInfos />} />
         </Routes>
       </div>
     </div>

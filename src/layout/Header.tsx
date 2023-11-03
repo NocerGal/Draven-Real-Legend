@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import LOL_ICON from '../assets/LoL.svg';
 import { ListBulletIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { useSidebarContext } from '../context/NavBar';
+import languages from '../datas/languages.json';
+import { useRef } from 'react';
 
 export default function Header() {
   const { toggleNavBar } = useSidebarContext();
@@ -17,6 +19,7 @@ export default function Header() {
             <img src={LOL_ICON} alt="lol icone" className="h-32 w-32" />
           </Link>
           <div className="flex gap-6 items-center align-middle my-auto  xl:hidden">
+            <LanguageSelector />
             <Theme />
             <ListBulletIcon
               className="h-16 w-16 p-3 items-center rounded-full cursor-pointer text-blue-9 fill-current dark:text-bluedark-12 hover:bg-blue-4 dark:hover:bg-blue-4  dark:hover:text-bluedark-3"
@@ -32,16 +35,29 @@ export default function Header() {
                 </li>
               </Link>
               <Link to={'/champions'}>
-                <li className="text-2xl text-blue-12 dark:text-bluedark-12 ">
+                <li className="text-2xl text-blue-12 dark:text-bluedark-12">
                   Statistics
                 </li>
               </Link>
               <Link to={'/champions'}>
-                <li className="text-2xl text-blue-12 dark:text-bluedark-12 ">
+                <li className="text-2xl text-blue-12 dark:text-bluedark-12">
                   Items
                 </li>
               </Link>
               <Theme />
+              <LanguageSelector />
+              {/* <select
+                className="text-2xl text-blue-12 dark:text-bluedark-12 bg-transparent"
+                name="lang"
+                id="lang"
+                onChange={handleChangeLanguage}
+              >
+                {languages.map((language) => (
+                  <option key={language} value={language}>
+                    {language.slice(-2)}
+                  </option>
+                ))}
+              </select> */}
             </ul>
           </nav>
         </div>
@@ -68,5 +84,31 @@ function Theme() {
         />
       )}
     </div>
+  );
+}
+function LanguageSelector() {
+  const { toggleLanguage } = useSidebarContext();
+  const selectref = useRef<HTMLSelectElement | null>(null);
+
+  const handleChangeLanguage = () => {
+    if (selectref.current) {
+      toggleLanguage(selectref.current.value);
+    }
+  };
+
+  return (
+    <select
+      ref={selectref}
+      className="text-2xl text-blue-12 dark:text-bluedark-12 bg-transparent"
+      name="lang"
+      id="lang"
+      onChange={handleChangeLanguage}
+    >
+      {languages.map((language) => (
+        <option key={language} value={language}>
+          {language.slice(-2)}
+        </option>
+      ))}
+    </select>
   );
 }

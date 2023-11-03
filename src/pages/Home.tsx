@@ -39,15 +39,15 @@ type FindPlayerFormProps = {
 
 function FindPlayerForm({ label }: FindPlayerFormProps) {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState<string | null>(
+  const [inputValue] = useState<string | null>(
     localStorage.getItem('summonerName')
   );
   const refInput = useRef<null | HTMLInputElement>(null);
   const refSelect = useRef<null | HTMLSelectElement>(null);
-  const [regionUserValue, setRegionUserValue] = useState<string | null>(
+  const [regionUserValue] = useState<string | null>(
     localStorage.getItem('regionUser')
   );
-  const [regionRiotValue, setRegionRiotUserValue] = useState<string | null>(
+  const [regionRiotValue] = useState<string | null>(
     localStorage.getItem('regionRiot')
   );
   const [errorMessage, setErrorMesssage] = useState<string | null>(null);
@@ -81,7 +81,6 @@ function FindPlayerForm({ label }: FindPlayerFormProps) {
       setErrorMesssage(
         'Votre summoner et/ou la région seletionnée est/sont incorrectes'
       );
-      navigate('/');
     }
   };
 

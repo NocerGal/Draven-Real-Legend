@@ -7,6 +7,8 @@ type NavBarProviderProps = {
 type NavBarContextType = {
   isSmallNavBarOpened: boolean;
   toggleNavBar: () => void;
+  language: string;
+  toggleLanguage: (lang: string) => void;
   theme: string;
   toggleTheme: () => void;
   systemeTheme: boolean;
@@ -30,6 +32,7 @@ export function NavBarProvider({ children }: NavBarProviderProps) {
   const userTheme = localStorage ? localStorage.getItem('theme') : null;
   const [isSmallNavBarOpened, setIsSmallNavBarOpened] = useState(false);
   const [theme, setTheme] = useState(systemeTheme ? 'dark' : 'light');
+  const [language, setLanguage] = useState<string>('en_US');
 
   const toggleNavBar = () => {
     setIsSmallNavBarOpened((prev) => !prev);
@@ -44,12 +47,17 @@ export function NavBarProvider({ children }: NavBarProviderProps) {
     document.documentElement.classList.add('dark');
     localStorage.setItem('theme', 'dark');
   };
+  const toggleLanguage = (lang: string) => {
+    setLanguage(lang);
+  };
 
   return (
     <NavBarContext.Provider
       value={{
         isSmallNavBarOpened,
         toggleNavBar,
+        language,
+        toggleLanguage,
         theme,
         toggleTheme,
         systemeTheme,
