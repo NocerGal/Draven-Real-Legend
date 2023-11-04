@@ -12,6 +12,8 @@ export async function getUserDatas(region: string, summonerName: string) {
   return { responseStatus, userDatas };
 }
 
+//euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=RGAPI-c69d1d57-7516-439f-890c-e28c2e2b112b`
+
 export const getUserMatchHistory = async (
   puuid: string,
   regionRouting: string
@@ -60,4 +62,17 @@ export const getItemInformation = async (language: string) => {
 
 export const getItemAsset = (item: number) => {
   return `http://ddragon.leagueoflegends.com/cdn/13.21.1/img/item/${item}.png`;
+};
+
+export const getAllSummonerSpells = async (lang: string) => {
+  const response = await fetch(
+    `http://ddragon.leagueoflegends.com/cdn/13.21.1/data/${lang}/summoner.json`
+  );
+  if (!response.ok) throw new Error('Error getInformation');
+  const allSummonerSpells = await response.json();
+  return allSummonerSpells;
+};
+
+export const getAssetSummonerSpells = (spell: string) => {
+  return `http://ddragon.leagueoflegends.com/cdn/13.21.1/img/spell/Summoner${spell}.png`;
 };

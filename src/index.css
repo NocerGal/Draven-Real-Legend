@@ -7,8 +7,8 @@
   content: '';
   left: 50%;
   top: 35%;
-  width: 350px;
-  height: 350px;
+  width: 30%;
+  height: 40%;
   background: #e6f4fe;
   border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
@@ -40,8 +40,9 @@
   content: '';
   left: 50%;
   top: 35%;
-  width: 350px;
-  height: 350px;
+
+  width: 30%;
+  height: 40%;
   background: #0d2847;
   border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
