@@ -9,7 +9,10 @@
   top: 35%;
   width: 30%;
   height: 40%;
-  background: #e6f4fe;
+  /* background: #e6f4fe; */
+  background-image: url('./assets/Draven_6.jpg'); /* Ajouter votre image ici */
+  background-size: cover; /* Cela garantit que l'image couvre entièrement l'élément */
+  background-repeat: no-repeat; /* Cela empêche l'image de se répéter */
   border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
   animation: sliderShape 5s linear infinite;
@@ -38,12 +41,15 @@
 .darkblob::before {
   position: absolute;
   content: '';
-  left: 50%;
+  left: 67%;
   top: 35%;
 
   width: 30%;
   height: 40%;
-  background: #0d2847;
+
+  background-image: url('./assets/Draven_6.jpg'); /* Ajouter votre image ici */
+  background-size: cover; /* Cela garantit que l'image couvre entièrement l'élément */
+  background-repeat: no-repeat; /* Cela empêche l'image de se répéter */
   border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
   animation: sliderShape 5s linear infinite;
@@ -67,5 +73,24 @@
   67% {
     border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
     transform: translate3d(0, -3px, 0) rotateZ(0.01deg);
+  }
+}
+
+.axe--2 {
+  transform: scaleY(-1) scaleX(-1);
+}
+
+.axe--animation {
+  margin: 0 auto;
+  transform: rotate(0deg);
+  animation: axeAnimation linear 1.5s infinite;
+}
+
+@keyframes axeAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

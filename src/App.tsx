@@ -5,6 +5,7 @@ import HeaderMobile from './layout/HeaderMobile';
 import { useSidebarContext } from './context/NavBar';
 import { useEffect } from 'react';
 import UserInfos from './pages/UserInfos';
+import Items from './pages/Items';
 
 function App() {
   const { userTheme, systemeTheme } = useSidebarContext();
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div
-      className={`flex flex-col bg-blue-1 dark:bg-bluedark-2 min-h-screen overflow-hidden ${
+      className={`flex flex-col bg-blue-1 dark:bg-bluedark-2 min-h-screen ${
         userTheme === 'dark' ? 'darkblob' : 'lightblob'
       }`}
     >
@@ -29,6 +30,8 @@ function App() {
         <HeaderMobile />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/items" element={<Items />} />
+
           <Route path="/:region/:puuid" element={<UserInfos />} />
         </Routes>
       </div>

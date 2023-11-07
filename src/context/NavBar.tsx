@@ -21,7 +21,6 @@ export const NavBarContext = createContext<null | NavBarContextType>(null);
 export function useSidebarContext() {
   const value = useContext(NavBarContext);
   if (value == null) throw Error('Cannot use outside of SidebarProvider');
-
   return value;
 }
 

@@ -12,8 +12,6 @@ export async function getUserDatas(region: string, summonerName: string) {
   return { responseStatus, userDatas };
 }
 
-//euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=RGAPI-c69d1d57-7516-439f-890c-e28c2e2b112b`
-
 export const getUserMatchHistory = async (
   puuid: string,
   regionRouting: string

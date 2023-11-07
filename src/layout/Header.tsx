@@ -46,18 +46,6 @@ export default function Header() {
               </Link>
               <Theme />
               <LanguageSelector />
-              {/* <select
-                className="text-2xl text-blue-12 dark:text-bluedark-12 bg-transparent"
-                name="lang"
-                id="lang"
-                onChange={handleChangeLanguage}
-              >
-                {languages.map((language) => (
-                  <option key={language} value={language}>
-                    {language.slice(-2)}
-                  </option>
-                ))}
-              </select> */}
             </ul>
           </nav>
         </div>
@@ -73,13 +61,15 @@ function Theme() {
     <div>
       {theme == 'light' && (
         <SunIcon
-          className="h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-9 dark:text-bluedark-12 fill-current hover:bg-blue-4   "
+          className=" 
+          h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-9 dark:text-bluedark-12 fill-current hover:bg-blue-4   "
           onClick={() => toggleTheme()}
         />
       )}
       {theme == 'dark' && (
         <MoonIcon
-          className="h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-9 dark:text-bluedark-12 fill-current hover:bg-blue-4 dark:hover:bg-blue-4 dark:hover:text-bluedark-3"
+          className="
+          h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-9 dark:text-bluedark-12 fill-current hover:bg-blue-4 dark:hover:bg-blue-4 dark:hover:text-bluedark-3"
           onClick={() => toggleTheme()}
         />
       )}
