@@ -57,7 +57,7 @@ export default function FormSearchPlayer({
       }
     } catch {
       setErrorMesssage(
-        'Votre summoner et/ou la région seletionnée est/sont incorrectes'
+        'Your summoner name and/or selectionned region are incorrect(s)'
       );
       hideLoader();
     }

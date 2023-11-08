@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
-import LOL_ICON from '../assets/LoL.svg';
+import LIGHT_LOGO from '../../public/LightLogo.png';
+import DARK_LOGO from '../../public/DarkLogo.png';
 import { ListBulletIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { useSidebarContext } from '../context/NavBar';
 import languages from '../datas/languages.json';
 import { useRef } from 'react';
 
 export default function Header() {
-  const { toggleNavBar } = useSidebarContext();
+  const { toggleNavBar, theme } = useSidebarContext();
 
   return (
     <>
@@ -14,9 +15,13 @@ export default function Header() {
         className="sticky top-0 bg-blue-1 border-b-2 border-blue-6 border-solid dark:border-bluedark-7 z-50
       h-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-0 dark:bg-bluedark-1"
       >
-        <div className="max-w-screen-xl mx-auto flex justify-between align-middle px-12 py-4 w-full max-h-full ">
+        <div className="max-w-screen-xl mx-auto flex justify-between align-middle px-12 w-full max-h-full ">
           <Link to={'/'}>
-            <img src={LOL_ICON} alt="lol icone" className="h-32 w-32" />
+            {theme == 'light' ? (
+              <img src={LIGHT_LOGO} alt="logo" className="h-36 w-36" />
+            ) : (
+              <img src={DARK_LOGO} alt="logo" className="h-36 w-36" />
+            )}
           </Link>
           <div className="flex gap-6 items-center align-middle my-auto  xl:hidden">
             <LanguageSelector />
@@ -62,14 +67,14 @@ function Theme() {
       {theme == 'light' && (
         <SunIcon
           className=" 
-          h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-9 dark:text-bluedark-12 fill-current hover:bg-blue-4   "
+          h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-12 dark:text-bluedark-12 fill-current hover:bg-blue-4   "
           onClick={() => toggleTheme()}
         />
       )}
       {theme == 'dark' && (
         <MoonIcon
           className="
-          h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-9 dark:text-bluedark-12 fill-current hover:bg-blue-4 dark:hover:bg-blue-4 dark:hover:text-bluedark-3"
+          h-14 w-14 p-3 items-center rounded-full cursor-pointer text-blue-12 dark:text-bluedark-12 fill-current hover:bg-blue-4 dark:hover:bg-blue-4 dark:hover:text-bluedark-3"
           onClick={() => toggleTheme()}
         />
       )}
