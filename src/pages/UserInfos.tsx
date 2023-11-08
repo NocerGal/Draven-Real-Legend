@@ -31,6 +31,8 @@ export default function UserInfos() {
     info: {
       gameDuration: number;
       participants: Array<{
+        totalEnemyJungleMinionsKilled: any;
+        totalAllyJungleMinionsKilled: number;
         win: boolean;
         teamPosition: string;
         champLevel: number;
@@ -144,7 +146,12 @@ export default function UserInfos() {
                     match.info.participants[userIndex[index]].goldSpent
                   }
                   minions={
-                    match.info.participants[userIndex[index]].totalMinionsKilled
+                    match.info.participants[userIndex[index]]
+                      .totalMinionsKilled +
+                    match.info.participants[userIndex[index]]
+                      .totalAllyJungleMinionsKilled +
+                    match.info.participants[userIndex[index]]
+                      .totalEnemyJungleMinionsKilled
                   }
                   level={match.info.participants[userIndex[index]].champLevel}
                   summonerName={

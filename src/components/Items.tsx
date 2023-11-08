@@ -8,13 +8,13 @@ interface ItemsDatas {
   data: Record<number, ItemData>;
 }
 
-interface ItemProps {
+type ItemProps = {
   item: number;
   itemsDatas: ItemsDatas;
   victory: boolean;
-}
+};
 
-export default function Item({ item, itemsDatas, victory }: ItemProps) {
+export default function ItemImages({ item, itemsDatas, victory }: ItemProps) {
   return item ? (
     <img
       className={`h-10 w-10 border-solid border-2 rounded-lg ${

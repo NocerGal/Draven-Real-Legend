@@ -1,4 +1,4 @@
-import AXE from '../../public/PngItem_2955839.png';
+import AXE from '../assets/PngItem_2955839.png';
 import { useLockBodyScroll } from '@uidotdev/usehooks';
 
 export default function Loader() {
@@ -18,4 +18,3 @@ export default function Loader() {
     </div>
   );
 }
-// absolute top-1/2 left-1/2  translate-y-full translate-x-full

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import LIGHT_LOGO from '../../public/LightLogo.png';
-import DARK_LOGO from '../../public/DarkLogo.png';
+import LIGHT_LOGO from '../assets/LightLogo.png';
+import DARK_LOGO from '../assets/DarkLogo.png';
 import { ListBulletIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import { useSidebarContext } from '../context/NavBar';
 import languages from '../datas/languages.json';
