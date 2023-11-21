@@ -9,7 +9,7 @@ type TeamMatesProps = {
 export default function TeamMates({ victory, participants }: TeamMatesProps) {
   return (
     <div
-      className={`p-2 rounded-lg max-md ${
+      className={`hidden lg:block lg:w-[500px] p-2 rounded-b-lg lg:rounded-lg max-md ${
         victory
           ? 'text-mint-1 dark:text-mintdark-12 bg-mint-6 dark:bg-mintdark-6 '
           : 'text-red-1 dark:text-reddark-12 bg-red-6 dark:bg-reddark-6'

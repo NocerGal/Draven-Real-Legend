@@ -5,6 +5,8 @@ export async function getUserDatas(region: string, summonerName: string) {
     `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${API_DEV_KEY}`
   );
   if (!response.ok) {
+    console.log(summonerName);
+
     throw new Error('Erreur API');
   }
   const userDatas = await response.json();
@@ -20,7 +22,6 @@ export const getUserMatchHistory = async (
     `https://${regionRouting}/lol/match/v5/matches/by-puuid/${puuid}/ids?api_key=${API_DEV_KEY}`
   );
   const matchHistory = await response.json();
-  console.log('requête GetUserMatchHistory');
 
   return matchHistory;
 };
@@ -35,7 +36,6 @@ export const getUserMatchInfosRegardingMatchId = async (
   if (!response.ok) throw new Error('ErreurApi');
   const matchInfos = await response.json();
 
-  console.log('requête getUserMatchInfosRegardingMatchId');
   return matchInfos;
 };
 
@@ -72,5 +72,5 @@ export const getAllSummonerSpells = async (lang: string) => {
 };
 
 export const getAssetSummonerSpells = (spell: string) => {
-  return `http://ddragon.leagueoflegends.com/cdn/13.21.1/img/spell/Summoner${spell}.png`;
+  return `http://ddragon.leagueoflegends.com/cdn/13.21.1/img/spell/${spell}.png`;
 };

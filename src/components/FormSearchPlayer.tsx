@@ -1,5 +1,6 @@
 import { regions } from '../datas/regions.json';
 import { useNavigate } from 'react-router-dom';
+
 import { getUserDatas } from '../api/routesApi';
 import { useLoaderContext } from '../context/LoaderCotext';
 import { useRef, useState } from 'react';
@@ -15,17 +16,18 @@ export default function FormSearchPlayer({
 }: FindPlayerFormProps) {
   const navigate = useNavigate();
   const { showLoader, hideLoader } = useLoaderContext();
-  const [inputValue] = useState<string | null>(
+  const [inputValue, setInputValue] = useState<string | null>(
     localStorage.getItem('summonerName')
   );
   const refInput = useRef<null | HTMLInputElement>(null);
   const refSelect = useRef<null | HTMLSelectElement>(null);
-  const [regionUserValue] = useState<string | null>(
+  const [regionUserValue, setRegionUserValue] = useState<string | null>(
     localStorage.getItem('regionUser')
   );
-  const [regionRiotValue] = useState<string | null>(
+  const [regionRiotValue, setRegionRiotValue] = useState<string | null>(
     localStorage.getItem('regionRiot')
   );
+
   const [errorMessage, setErrorMesssage] = useState<string | null>(null);
 
   const handleErrorSubmit = () => {
@@ -49,11 +51,17 @@ export default function FormSearchPlayer({
         refSelect.current.value,
         refInput.current.value
       );
+      setInputValue(userDatas.name);
+      setRegionUserValue(
+        refSelect.current.options[refSelect.current.selectedIndex].text
+      );
+      setRegionRiotValue(refSelect.current.value);
 
       localStorage.setItem('summonerName', userDatas.name);
       if (responseStatus === 200) {
         navigate(`/${refSelect.current.value}/${userDatas.puuid}`);
         hideLoader();
+        window.location.reload();
       }
     } catch {
       setErrorMesssage(
@@ -66,7 +74,6 @@ export default function FormSearchPlayer({
   return (
     <form
       className={className}
-      id="form"
       noValidate
       onSubmit={(e) => {
         e.preventDefault();
@@ -88,6 +95,8 @@ export default function FormSearchPlayer({
             <input
               {...(inputValue ? { defaultValue: inputValue } : {})}
               id="summoner-name"
+              name="summoner-name"
+              onChange={(e) => setInputValue(e.target.value)}
               ref={refInput}
               type="text"
               required
