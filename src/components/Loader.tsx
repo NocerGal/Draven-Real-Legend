@@ -1,4 +1,4 @@
-import AXE from '../assets/PngItem_2955839.png';
+import AXE from '/PngItem_2955839.png';
 import { useLockBodyScroll } from '@uidotdev/usehooks';
 
 export default function Loader() {

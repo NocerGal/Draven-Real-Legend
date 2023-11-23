@@ -122,10 +122,6 @@ export default function UserInfos() {
 
   return (
     <section>
-      <FormSearchPlayer
-        className="flex justify-around mb-4"
-        label="Tape your summoner name and select your region"
-      />
       <div>
         <h1 className="text-2xl md:text-3xl px-4 mb-14 text-center mt-8 text-blue-12 dark:text-bluedark-12 ">
           Warm welcome {summonerName} to your match history! Draven is jugging

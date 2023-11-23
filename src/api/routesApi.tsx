@@ -5,8 +5,6 @@ export async function getUserDatas(region: string, summonerName: string) {
     `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${API_DEV_KEY}`
   );
   if (!response.ok) {
-    console.log(summonerName);
-
     throw new Error('Erreur API');
   }
   const userDatas = await response.json();

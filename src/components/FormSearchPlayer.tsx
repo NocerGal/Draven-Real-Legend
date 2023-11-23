@@ -35,8 +35,12 @@ export default function FormSearchPlayer({
   };
 
   const handleSubmit = async () => {
+    console.log('submit form');
+
     showLoader();
     if (refInput.current && refSelect.current) {
+      console.log('check values');
+
       localStorage.setItem('regionRiot', refSelect.current.value);
       localStorage.setItem(
         'regionUser',
@@ -59,11 +63,20 @@ export default function FormSearchPlayer({
 
       localStorage.setItem('summonerName', userDatas.name);
       if (responseStatus === 200) {
-        navigate(`/${refSelect.current.value}/${userDatas.puuid}`);
-        hideLoader();
-        window.location.reload();
+        console.log('status 200 ok');
+
+        setTimeout(() => {
+          if (refSelect.current) {
+            console.log('navigate');
+
+            navigate(`/${refSelect.current.value}/${userDatas.puuid}`);
+          }
+          hideLoader();
+        }, 2000);
       }
     } catch {
+      console.log('error catch');
+
       setErrorMesssage(
         'Your summoner name and/or selectionned region are incorrect(s)'
       );

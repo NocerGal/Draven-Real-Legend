@@ -9,10 +9,9 @@
   top: 35%;
   width: 30%;
   height: 40%;
-  /* background: #e6f4fe; */
-  background-image: url('./assets/Draven_6.jpg'); /* Ajouter votre image ici */
-  background-size: cover; /* Cela garantit que l'image couvre entièrement l'élément */
-  background-repeat: no-repeat; /* Cela empêche l'image de se répéter */
+  background-image: url('../public/Draven_6.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
   animation: sliderShape 5s linear infinite;
@@ -47,9 +46,9 @@
   width: 30%;
   height: 40%;
 
-  background-image: url('./assets/Draven_6.jpg'); /* Ajouter votre image ici */
-  background-size: cover; /* Cela garantit que l'image couvre entièrement l'élément */
-  background-repeat: no-repeat; /* Cela empêche l'image de se répéter */
+  background-image: url('../public/Draven_6.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   will-change: border-radius, transform, opacity;
   animation: sliderShape 5s linear infinite;
@@ -84,6 +83,10 @@
   margin: 0 auto;
   transform: rotate(0deg);
   animation: axeAnimation linear 1.5s infinite;
+}
+
+select {
+  -webkit-appearance: none;
 }
 
 @keyframes axeAnimation {
